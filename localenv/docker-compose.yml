@@ -1,0 +1,48 @@
+version: '3.7'
+
+services:
+
+  postgresdb:
+    image: postgres:11-alpine
+    ports:
+      - 15432:5432
+    environment:
+      POSTGRES_PASSWORD: postgres
+    volumes:
+      - rdcpostgres-test:/var/lib/postgresql-pp-test/data
+      - ./init-db-and-user.sql:/docker-entrypoint-initdb.d/init.sql
+
+
+  adminer:
+    image: adminer
+    ports:
+      - 18090:8080
+
+
+  fregCollector:
+    image: statisticsnorway/dc-ske-freg-feed:0.10
+    ports:
+      - 18080:8080
+    volumes:
+      - ./freg-collector:/conf
+      - ./certs:/certs
+      - /tmp/rawdata:/rawdata
+    depends_on:
+      - postgresdb
+
+
+  fregConverter:
+    build:
+      context: ../rawdata-converter-app-freg
+    image: rawdata-converter-app-freg:dev
+    ports:
+      - 18081:8080
+    volumes:
+      - ./freg-converter:/conf
+      - ./datasets:/datasets
+    depends_on:
+      - postgresdb
+
+
+volumes:
+  rdcpostgres-test:
