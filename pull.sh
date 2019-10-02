@@ -1,8 +1,8 @@
 #!/bin/sh
 
 declare -a repos=(
-	"no.ssb.rawdata-converter-core"
-	"no.ssb.rawdata-converter-app-freg"
+	"rawdata-converter-core"
+	"rawdata-converter-app-freg"
 )
 
 for repo in "${repos[@]}"
