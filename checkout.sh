@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
 declare -a repos=(
 	"rawdata-converter-core"
@@ -8,6 +8,5 @@ declare -a repos=(
 for repo in "${repos[@]}"
 do
     echo git clone git@github.com:statisticsnorway/${repo}.git
-	git clone git@github.com:statisticsnorway/${repo}.git
+	  git clone git@github.com:statisticsnorway/${repo}.git
 done
-
