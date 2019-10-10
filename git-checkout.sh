@@ -2,7 +2,7 @@
 
 declare -a repos=(
 	"rawdata-converter-core"
-	"rawdata-converter-app-freg",
+	"rawdata-converter-app-freg"
     "rawdata-converter-app-sirius"
 )
 

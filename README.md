@@ -30,6 +30,7 @@ You can use `make` to execute common tasks:
 ```
 install                        Checkout all related rawdata-converter repos
 update-all                     Pull all changes from remote repos
+status-all                     Show a brief summary of local changes
 build-all                      Build all
 ```
 
