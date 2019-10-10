@@ -1,5 +1,6 @@
 freg-collector-host = http://localhost:18080
 freg-converter-host = http://localhost:18081
+sirius-converter-host = http://localhost:18083
 
 .PHONY: default
 default: | help
@@ -42,9 +43,13 @@ freg-collector-deactivate: ## Deactivate the FREG rawdata collector
 freg-converter-activate: ## Activate the FREG rawdata converter
 	curl -X POST $(freg-converter-host)/rawdata-converter/start
 
-.PHONY: freg-converter-deactivate
-freg-converter-deactivate: ## Deactivate the FREG rawdata converter
-	curl -X POST $(freg-converter-host)/rawdata-converter/stop
+.PHONY: sirius-converter-activate
+sirius-converter-activate: ## Activate the Sirius rawdata converter
+	curl -X POST $(sirius-converter-host)/rawdata-converter/start
+
+.PHONY: sirius-converter-deactivate
+sirius-converter-deactivate: ## Deactivate the Sirius rawdata converter
+	curl -X POST $(sirius-converter-host)/rawdata-converter/stop
 
 .PHONY: open-adminer
 open-adminer: ## Open a web based DB admin tool in your browser

@@ -38,4 +38,5 @@ build-all                      Build all
 
 * [rawdata-converter-core](https://github.com/statisticsnorway/rawdata-converter-core)
 * [rawdata-converter-app-freg](https://github.com/statisticsnorway/rawdata-converter-app-freg)
+* [rawdata-converter-app-sirius](https://github.com/statisticsnorway/rawdata-converter-app-sirius)
 * [localenv](localenv/README.md)

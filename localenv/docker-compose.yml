@@ -44,5 +44,18 @@ services:
       - postgresdb
 
 
+  siriusConverter:
+    build:
+      context: ../rawdata-converter-app-sirius
+    image: rawdata-converter-app-sirius:dev
+    ports:
+      - 18083:8080
+    volumes:
+      - ./sirius-converter:/conf
+      - ./datasets:/datasets
+    depends_on:
+      - postgresdb
+
+
 volumes:
   rdcpostgres-test:
