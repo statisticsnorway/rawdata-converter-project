@@ -1,19 +1,18 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
 declare -a repos=(
-	"rawdata-converter-core"
-	"rawdata-converter-app-freg"
-	"rawdata-converter-app-sirius"
+  "rawdata-converter-core"
+  "rawdata-converter-app-freg"
+  "rawdata-converter-app-sirius"
 )
 
-echo "\nrawdata-converter-core"
+printf '\nrawdata-converter-core'
 echo "----------------------------------------------------------------"
 git status --short
 
 for repo in "${repos[@]}"
 do
-    echo "\n"${repo}
-    echo "----------------------------------------------------------------"
-	git -C ${repo} status --short
+  printf '\n%s' "${repo}"
+  echo "----------------------------------------------------------------"
+  git -C ${repo} status --short
 done
-
