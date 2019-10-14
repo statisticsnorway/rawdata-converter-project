@@ -39,6 +39,10 @@ freg-collector-activate: ## Activate the FREG rawdata collector
 freg-converter-activate: ## Activate the FREG rawdata converter
 	curl -X POST $(freg-converter-host)/rawdata-converter/start
 
+.PHONY: freg-converter-deactivate
+freg-converter-deactivate: ## Deactivate the FREG rawdata converter
+	curl -X POST $(freg-converter-host)/rawdata-converter/stop
+
 .PHONY: sirius-person-utkast-collector-activate
 sirius-person-utkast-collector-activate: ## Activate the Sirius Person Utkast rawdata collector
 	curl -X PUT $(data-collector-host)/task -H 'content-type: application/json' -d @data-collector/specs/ske-sirius-person-utkast-spec.json

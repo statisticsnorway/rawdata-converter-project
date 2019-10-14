@@ -6,7 +6,7 @@ declare -a repos=(
   "rawdata-converter-app-sirius"
 )
 
-printf '\nrawdata-converter-core'
+printf '\nrawdata-converter-project'
 echo "----------------------------------------------------------------"
 git status --short
 
