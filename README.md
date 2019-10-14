@@ -28,10 +28,13 @@ local runtime environment.
 You can use `make` to execute common tasks:
 
 ```
-install                        Checkout all related rawdata-converter repos
-update-all                     Pull all changes from remote repos
-status-all                     Show a brief summary of local changes
-build-all                      Build all
+build-all                      Build all and create docker image (requires rawdata-converter-project)
+build-all-mvn                  Build all from parent (requires rawdata-converter-project)
+build-mvn                      Build the project and install to you local maven repo
+build-docker                   Build the docker image
+run-local                      Run the app locally (without docker)
+release-dryrun                 Simulate a release in order to detect any issues
+release                        Release a new version. Update POMs and tag the new version in git. Drone deploys upon tag detection.
 ```
 
 

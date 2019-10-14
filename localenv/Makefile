@@ -1,4 +1,4 @@
-freg-collector-host = http://localhost:18080
+data-collector-host = http://localhost:18080
 freg-converter-host = http://localhost:18081
 sirius-converter-host = http://localhost:18083
 
@@ -23,9 +23,9 @@ stop-all: ## Stop and remove all services (docker containers)
 start-db: ## Start DB-only containers
 	docker-compose up postgresdb adminer
 
-.PHONY: start-freg-collector
-start-freg-collector: ## Start the FREG rawdata collector service
-	docker-compose up fregCollector
+.PHONY: start-data-collector
+start-freg-collector: ## Start the data collector service
+	docker-compose up dataCollector
 
 .PHONY: start-freg-converter
 start-freg-converter: ## Start the FREG rawdata converter service
@@ -33,15 +33,19 @@ start-freg-converter: ## Start the FREG rawdata converter service
 
 .PHONY: freg-collector-activate
 freg-collector-activate: ## Activate the FREG rawdata collector
-	curl $(freg-collector-host)/freg/dc/start
-
-.PHONY: freg-collector-deactivate
-freg-collector-deactivate: ## Deactivate the FREG rawdata collector
-	curl $(freg-collector-host)/freg/dc/stop
+	curl -X PUT $(data-collector-host)/task -H 'content-type: application/json' -d @data-collector/specs/ske-freg-playground-spec.json
 
 .PHONY: freg-converter-activate
 freg-converter-activate: ## Activate the FREG rawdata converter
 	curl -X POST $(freg-converter-host)/rawdata-converter/start
+
+.PHONY: sirius-person-utkast-collector-activate
+sirius-person-utkast-collector-activate: ## Activate the Sirius Person Utkast rawdata collector
+	curl -X PUT $(data-collector-host)/task -H 'content-type: application/json' -d @data-collector/specs/ske-sirius-person-utkast-spec.json
+
+.PHONY: sirius-person-fastsatt-collector-activate
+sirius-person-fastsatt-collector-activate: ## Activate the Sirius Person Fastsatt rawdata collector
+	curl -X PUT $(data-collector-host)/task -H 'content-type: application/json' -d @data-collector/specs/ske-sirius-person-fastsatt-spec.json
 
 .PHONY: sirius-converter-activate
 sirius-converter-activate: ## Activate the Sirius rawdata converter
@@ -50,6 +54,10 @@ sirius-converter-activate: ## Activate the Sirius rawdata converter
 .PHONY: sirius-converter-deactivate
 sirius-converter-deactivate: ## Deactivate the Sirius rawdata converter
 	curl -X POST $(sirius-converter-host)/rawdata-converter/stop
+
+.PHONY: toll-tvinn-collector-activate
+toll-tvinn-collector-activate: ## Activate the Tvinn Tolldeklarasjon rawdata collector
+	curl -X PUT $(data-collector-host)/task -H 'content-type: application/json' -d @data-collector/specs/toll-tvinn-test-spec.json
 
 .PHONY: open-adminer
 open-adminer: ## Open a web based DB admin tool in your browser
@@ -61,4 +69,4 @@ validate-certs:
 
 .PHONY: help
 help:
-	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
+	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-45s\033[0m %s\n", $$1, $$2}'

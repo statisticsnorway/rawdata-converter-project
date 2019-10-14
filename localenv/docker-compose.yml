@@ -19,12 +19,12 @@ services:
       - 18090:8080
 
 
-  fregCollector:
-    image: statisticsnorway/dc-ske-freg-feed:0.10
+  dataCollector:
+    image: statisticsnorway/data-collector:latest
     ports:
-      - 18080:8080
+      - 18080:9090
     volumes:
-      - ./freg-collector:/conf
+      - ./data-collector:/conf
       - ./certs:/certs
       - /tmp/rawdata:/rawdata
     depends_on:
