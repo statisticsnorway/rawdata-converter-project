@@ -8,7 +8,13 @@ default: | help
 .PHONY: start-all
 start-all: ## Start all services (docker containers)
 	@make validate-certs
+	docker-compose up -d
+
+.PHONY: start-all-with-console
+start-all-with-console: ## Start all services (docker containers) with output to console
+	@make validate-certs
 	docker-compose up
+
 
 .PHONY: start-all-recreate
 start-all-recreate: ## Recreate and start docker containers even if their configuration and image haven't changed
@@ -69,7 +75,7 @@ open-adminer: ## Open a web based DB admin tool in your browser
 
 .PHONY: validate-certs
 validate-certs:
-	@test -d certs || (echo "Unable to find certificates. Call a friend..." && exit 1)
+	@test -d auth/certs || (echo "Unable to find certificates. Call a friend..." && exit 1)
 
 .PHONY: help
 help:
