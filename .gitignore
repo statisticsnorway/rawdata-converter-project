@@ -12,6 +12,7 @@ out/
 .settings
 .classpath
 certs/
+auth/
 datasets/
 rawdata-converter-core/
 rawdata-converter-app-freg/
