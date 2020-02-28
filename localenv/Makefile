@@ -1,3 +1,5 @@
+SHELL:=/usr/bin/env bash
+
 data-collector-host = http://localhost:18080
 freg-converter-host = http://localhost:18081
 sirius-converter-host = http://localhost:18083
@@ -14,7 +16,6 @@ start-all: ## Start all services (docker containers)
 start-all-with-console: ## Start all services (docker containers) with output to console
 	@make validate-certs
 	docker-compose up
-
 
 .PHONY: start-all-recreate
 start-all-recreate: ## Recreate and start docker containers even if their configuration and image haven't changed
@@ -56,6 +57,10 @@ sirius-person-utkast-collector-activate: ## Activate the Sirius Person Utkast ra
 .PHONY: sirius-person-fastsatt-collector-activate
 sirius-person-fastsatt-collector-activate: ## Activate the Sirius Person Fastsatt rawdata collector
 	curl -X PUT $(data-collector-host)/task -H 'content-type: application/json' -d @data-collector/specs/ske-sirius-person-fastsatt-spec.json
+
+.PHONY: start-sirius-converter
+start-sirius-converter: ## Start the sirius converter service
+	docker-compose up -d siriusConverter
 
 .PHONY: sirius-converter-activate
 sirius-converter-activate: ## Activate the Sirius rawdata converter

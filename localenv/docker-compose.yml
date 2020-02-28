@@ -48,14 +48,13 @@ services:
     build:
       context: ../rawdata-converter-app-sirius
     image: rawdata-converter-app-sirius:dev
+    volumes:
+      - ./auth/gcs/dev-bip:/certs
+    environment:
+      - MICRONAUT_ENVIRONMENTS=local-gcs,pseudo-secrets
+      - GOOGLE_APPLICATION_CREDENTIALS=/certs/gcs_credentials.json
     ports:
       - 18083:8080
-    volumes:
-      - ./sirius-converter:/conf
-      - ./datasets:/datasets
-    depends_on:
-      - postgresdb
-
 
 volumes:
   rdcpostgres-test:
