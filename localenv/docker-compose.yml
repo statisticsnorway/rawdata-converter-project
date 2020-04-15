@@ -44,17 +44,31 @@ services:
       - postgresdb
 
 
-  siriusConverter:
-    build:
-      context: ../rawdata-converter-app-sirius
-    image: rawdata-converter-app-sirius:dev
+  2018-sirius-converter:
+    build: ../rawdata-converter-app-sirius
+    image: 2018-sirius-converter:dev
     volumes:
-      - ./auth/gcs/dev-bip:/certs
+      - ./auth/gcs/dev-bip:/keys
+      - ./sirius-converter-2018:/conf
     environment:
-      - MICRONAUT_ENVIRONMENTS=local-gcs,pseudo-secrets
-      - GOOGLE_APPLICATION_CREDENTIALS=/certs/gcs_credentials.json
+      - MICRONAUT_ENVIRONMENTS=gcs-2018
+      - MICRONAUT_CONFIG_FILES=/conf/application-gcs-2018.yml
     ports:
-      - 18083:8080
+      - 28083:28083
+
+
+  2019-sirius-converter:
+    build: ../rawdata-converter-app-sirius
+    image: 2019-sirius-converter:dev
+    volumes:
+      - ./auth/gcs/dev-bip:/keys
+      - ./sirius-converter-2019:/conf
+    environment:
+      - MICRONAUT_ENVIRONMENTS=gcs-2019
+      - MICRONAUT_CONFIG_FILES=/conf/application-gcs-2019.yml
+    ports:
+      - 28084:28084
+
 
 volumes:
   rdcpostgres-test:

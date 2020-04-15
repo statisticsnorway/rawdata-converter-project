@@ -2,7 +2,8 @@ SHELL:=/usr/bin/env bash
 
 data-collector-host = http://localhost:18080
 freg-converter-host = http://localhost:18081
-sirius-converter-host = http://localhost:18083
+2018-sirius-converter-host = http://localhost:28083
+2019-sirius-converter-host = http://localhost:28084
 
 .PHONY: default
 default: | help
@@ -58,17 +59,29 @@ sirius-person-utkast-collector-activate: ## Activate the Sirius Person Utkast ra
 sirius-person-fastsatt-collector-activate: ## Activate the Sirius Person Fastsatt rawdata collector
 	curl -X PUT $(data-collector-host)/task -H 'content-type: application/json' -d @data-collector/specs/ske-sirius-person-fastsatt-spec.json
 
-.PHONY: start-sirius-converter
-start-sirius-converter: ## Start the sirius converter service
-	docker-compose up -d siriusConverter
+.PHONY: start-2018-sirius-converter
+start-2018-sirius-converter: ## Start the 2018 sirius converter
+	docker-compose up -d --build 2018-sirius-converter
 
-.PHONY: sirius-converter-activate
-sirius-converter-activate: ## Activate the Sirius rawdata converter
-	curl -X POST $(sirius-converter-host)/rawdata-converter/start
+.PHONY: activate-2018-sirius-converter
+activate-2018-sirius-converter: ## Activate the 2018 Sirius rawdata converter
+	curl -X POST $(2018-sirius-converter-host)/rawdata-converter/start
 
-.PHONY: sirius-converter-deactivate
-sirius-converter-deactivate: ## Deactivate the Sirius rawdata converter
-	curl -X POST $(sirius-converter-host)/rawdata-converter/stop
+.PHONY: deactivate-2018-sirius-converter
+deactivate-2018-sirius-converter: ## Deactivate the 2018 Sirius rawdata converter
+	curl -X POST $(2018-sirius-converter-host)/rawdata-converter/stop
+
+.PHONY: start-2019-sirius-converter
+start-2019-sirius-converter: ## Start the 2019 sirius converter
+	docker-compose up -d --build 2019-sirius-converter
+
+.PHONY: activate-2019-sirius-converter
+activate-2019-sirius-converter: ## Activate the 2019 Sirius rawdata converter
+	curl -X POST $(2019-sirius-converter-host)/rawdata-converter/start
+
+.PHONY: deactivate-2019-sirius-converter
+deactivate-2019-sirius-converter: ## Deactivate the 2019 Sirius rawdata converter
+	curl -X POST $(2019-sirius-converter-host)/rawdata-converter/stop
 
 .PHONY: toll-tvinn-collector-activate
 toll-tvinn-collector-activate: ## Activate the Tvinn Tolldeklarasjon rawdata collector
