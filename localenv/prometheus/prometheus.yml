@@ -1,0 +1,30 @@
+# global config
+global:
+  scrape_interval:     15s # Default is every 1 minute.
+  evaluation_interval: 15s # Default is every 1 minute.
+  scrape_timeout:      10s # Default
+
+# Load rules once and periodically evaluate them according to the global 'evaluation_interval'.
+rule_files:
+# - "first_rules.yml"
+# - "second_rules.yml"
+
+scrape_configs:
+  # The job name is added as a label `job=<job_name>` to any timeseries scraped from this config.
+  - job_name: 'prometheus'
+    # metrics_path defaults to '/metrics'
+    # scheme defaults to 'http'.
+    static_configs:
+      - targets: ['127.0.0.1:9090']
+
+  - job_name:        '2018-sirius-converter'
+    metrics_path:    '/prometheus'
+    scrape_interval: 5s
+    static_configs:
+      - targets: ['2018-sirius-converter:28083']
+
+  - job_name:        '2019-sirius-converter'
+    metrics_path:    '/prometheus'
+    scrape_interval: 5s
+    static_configs:
+      - targets: ['2019-sirius-converter:28084']
