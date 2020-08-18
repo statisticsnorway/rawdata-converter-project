@@ -12,6 +12,7 @@
         <module>rawdata-converter-core</module>
         <module>rawdata-converter-app-freg</module>
         <module>rawdata-converter-app-sirius</module>
+        <module>rawdata-converter-app-altinn3</module>
     </modules>
 
 </project>
