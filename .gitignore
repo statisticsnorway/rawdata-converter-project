@@ -14,7 +14,9 @@ out/
 certs/
 auth/
 datasets/
-/rawdata-converter-core/
+/rawdata-converter-app-altinn3/
+/rawdata-converter-app-bong/
 /rawdata-converter-app-freg/
 /rawdata-converter-app-sirius/
-/rawdata-converter-app-altinn3/
+/rawdata-converter-core/
+/rawdata-converter-testutils/

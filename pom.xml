@@ -9,10 +9,12 @@
     <name>Rawdata Converter Project</name>
 
     <modules>
-        <module>rawdata-converter-core</module>
+        <module>rawdata-converter-app-altinn3</module>
+        <module>rawdata-converter-app-bong</module>
         <module>rawdata-converter-app-freg</module>
         <module>rawdata-converter-app-sirius</module>
-        <module>rawdata-converter-app-altinn3</module>
+        <module>rawdata-converter-core</module>
+        <module>rawdata-converter-testutils</module>
     </modules>
 
 </project>
