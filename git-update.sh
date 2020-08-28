@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 function update {
-    printf "Updating $1$2... "
+    printf "Updating $2... "
     output=$(git -C ${1}/ pull --rebase 2>&1)
     handle_response
 }
@@ -41,7 +41,7 @@ function handle_response {
     fi
 }
 
-update "." "localenv"
+update "." "rawdata-converter-project"
 while read -r repo
 do
     if [ -d ${repo} ];
