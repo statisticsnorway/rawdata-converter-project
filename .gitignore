@@ -14,9 +14,12 @@ out/
 certs/
 auth/
 datasets/
+/cookiecutter-rawdata-converter-app
 /rawdata-converter-app-altinn3/
+/rawdata-converter-app-csv/
 /rawdata-converter-app-bong/
 /rawdata-converter-app-freg/
 /rawdata-converter-app-sirius/
-/rawdata-converter-core/
+/rawdata-converter-coredux/
 /rawdata-converter-testutils/
+/rawdata-converter-scripts/
