@@ -13,6 +13,7 @@
         <module>rawdata-converter-app-csv</module>
         <module>rawdata-converter-app-freg</module>
         <module>rawdata-converter-app-sirius</module>
+        <module>rawdata-converter-bom</module>
         <module>rawdata-converter-coredux</module>
         <module>rawdata-converter-testutils</module>
     </modules>
