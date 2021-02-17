@@ -16,3 +16,4 @@ auth/
 datasets/
 /cookiecutter-rawdata-converter-app
 /rawdata-converter-*/
+/rawdata-converter

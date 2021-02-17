@@ -3,19 +3,18 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>no.ssb.rawdata.converter</groupId>
     <artifactId>rawdata-converter-project</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
+    <version>1-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <name>Rawdata Converter Project</name>
 
     <modules>
+        <module>rawdata-converter</module>
         <module>rawdata-converter-app-altinn3</module>
         <module>rawdata-converter-app-csv</module>
         <module>rawdata-converter-app-freg</module>
+        <module>rawdata-converter-app-kostra</module>
         <module>rawdata-converter-app-sirius</module>
-        <module>rawdata-converter-bom</module>
-        <module>rawdata-converter-coredux</module>
-        <module>rawdata-converter-testutils</module>
     </modules>
 
 </project>

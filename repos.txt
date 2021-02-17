@@ -1,9 +1,8 @@
 cookiecutter-rawdata-converter-app
+rawdata-converter
 rawdata-converter-app-altinn3
 rawdata-converter-app-csv
 rawdata-converter-app-freg
+rawdata-converter-app-kostra
 rawdata-converter-app-sirius
-rawdata-converter-bom
-rawdata-converter-coredux
 rawdata-converter-scripts
-rawdata-converter-testutils
