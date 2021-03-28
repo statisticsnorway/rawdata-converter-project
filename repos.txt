@@ -6,3 +6,4 @@ rawdata-converter-app-freg
 rawdata-converter-app-kostra
 rawdata-converter-app-sirius
 rawdata-converter-scripts
+rawdata-converter-app-brreg-enhetsreg

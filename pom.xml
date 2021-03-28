@@ -9,6 +9,7 @@
     <name>Rawdata Converter Project</name>
 
     <modules>
+        <module>rawdata-converter-app-brreg-enhetsreg</module>
         <module>rawdata-converter</module>
         <module>rawdata-converter-app-altinn3</module>
         <module>rawdata-converter-app-csv</module>
